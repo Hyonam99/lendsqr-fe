@@ -5,7 +5,6 @@ import Menu from './image_icons_asset/pop-up-icon.svg'
 import Prev from './image_icons_asset/prev btn.svg'
 import Next from './image_icons_asset/next btn.svg'
 import User from './image_icons_asset/users.svg'
-import Users from './image_icons_asset/users.svg'
 import Loan from './image_icons_asset/loans-icon.svg'
 import Loan_s from './image_icons_asset/loans-savings.svg'
 
@@ -36,32 +35,34 @@ function DataList({allblog}){
   }
 
   const changeDate = (CurrentDt) => {
-      // Date (CurrentDt)
+      Date (CurrentDt)
   }
-  
+
+  let userDB = JSON.parse(localStorage.getItem('allUsers'))
+  const userCount = userDB.length
   return(
 
     <>
        <section className="Dash-preview">
         <div className="card">
-          <p><img src={ User } alt="" /></p>
+          <p><img src={ User } /></p>
           <p>USERS</p>
-          <p>2,000</p>
+          <p>{userCount}</p>
         </div>
         <div className="card">
-        <p><img src={ User } alt="" /></p>
+        <p><img src={ User } /></p>
           <p>ACTIVE USERS</p>
-          <p>2,000</p>
+          <p>{userCount}</p>
         </div>
         <div className="card">
-        <p><img src={ Loan } alt="" /></p>
+        <p><img src={ Loan } /></p>
           <p>USERS WITH LOANS</p>
-          <p>2,000</p>
+          <p>{userCount}</p>
         </div>
         <div className="card">
-        <p><img src={ Loan_s } alt="" /></p>
+        <p><img src={ Loan_s } /></p>
           <p>USERS WITH SAVINGS</p>
-          <p>2,000</p>
+          <p>{userCount}</p>
         </div>
       </section>
     <section className="Dash-table">
@@ -113,15 +114,3 @@ function DataList({allblog}){
 
 export default DataList
 
-/**
- *  {allblog.map((blog) => (
-        <div className="blog-preview" key={blog.id}>
-          <h3>{ blog.id }</h3>
-          <h4>{ blog.userName }</h4>
-          <p>{ blog.email }</p>
-          <p>{ blog.phoneNumber }</p>
-          <p>{ blog.profile.firstName }</p>
-          <p>{ blog.orgName }</p>
-        </div>
-      ))}
- */

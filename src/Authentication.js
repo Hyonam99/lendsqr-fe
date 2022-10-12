@@ -1,6 +1,6 @@
 import React from 'react'
-import Login_intro from './Login_intro'
-import Login_form from './Login_form'
+import Login_intro from './LoginIntro'
+import Login_form from './LoginForm'
 
 const authentication = () => {
   return (

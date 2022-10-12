@@ -38,42 +38,5 @@ function Danalytics() {
 }
 
 
-//! the table row for the data fetched from the api
-
-/*******************************************
-<tr>
-<td>Anom</td>
-<td>Tekken</td>
-<td>telma@mail.com</td>
-<td>08180387593</td>
-<td>20 Oct 2020</td>
-<td>Pending</td>       
-<td>|</td>
-</tr>
-
-<DataList allblog={blogs}/>  
-
-   <section className="Dash-preview">
-        <div className="card">
-          <p><img src={ User } alt="" /></p>
-          <p>USERS</p>
-          <p>2,000</p>
-        </div>
-        <div className="card">
-        <p><img src={ User } alt="" /></p>
-          <p>ACTIVE USERS</p>
-          <p>2,000</p>
-        </div>
-        <div className="card">
-        <p><img src={ Loan } alt="" /></p>
-          <p>USERS WITH LOANS</p>
-          <p>2,000</p>
-        </div>
-        <div className="card">
-        <p><img src={ Loan_s } alt="" /></p>
-          <p>USERS WITH SAVINGS</p>
-          <p>2,000</p>
-        </div>
-      </section>
- ****************************************/
+     
 export default Danalytics;

@@ -125,8 +125,8 @@ nav input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 5%;
-  width: 20%;
+  gap: 3%;
+  width: 25%;
   padding: 0 2%;
 }
 
@@ -322,5 +322,51 @@ article {
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
     overflow: visible;
+  }
+  .contact, .Dash-sidebar {
+    display: none;
+  }
+  .User-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+  .User-dashboard .Dash-header {
+    grid-column: 1/4;
+  }
+  .User-dashboard .Dash-analytics {
+    grid-column: 1/4;
+    background-color: hsl(0deg, 0%, 96%);
+    padding: 3%;
+    height: auto;
+  }
+  .User-dashboard .profile-analytics {
+    grid-column: 1/4;
+    padding: 3%;
+    height: auto;
+  }
+  .User-dashboard .Dash-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    margin-bottom: 2%;
+    flex-wrap: nowrap;
+    font-size: 0.8rem;
+  }
+  .User-dashboard .Dash-preview > div {
+    width: 80%;
+    height: 120px;
+    padding: 1% 10%;
+    margin-bottom: 2.5%;
+    border-radius: 4px;
+  }
+  .User-dashboard .Dash-preview p {
+    margin: 0;
+    line-height: 1.8rem;
+  }
+  .quick-access {
+    display: none;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -1,8 +1,8 @@
 import React from "react";
 import "./style.css";
-import Dashboard_header from "./Dashboard_header";
-import Dashboard_sidebar from "./Dashboard_sidebar";
-import Dashboard_analytics from './Dashboard_analytics'
+import Dashboard_header from "./DashboardHeader";
+import Dashboard_sidebar from "./DashboardSidebar";
+import Dashboard_analytics from './DashboardAnalytics'
 
 function Dashboard() {
   return (

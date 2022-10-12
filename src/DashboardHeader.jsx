@@ -1,6 +1,5 @@
 import React from 'react'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' 
+
 import Logo from './Logo';
 import './style.css';
 
@@ -13,14 +12,13 @@ function Dheader(){
   <div className="search-box">
         <input type='search' placeholder='search for anything' />
         <span className='search-icon'>
-        {/* <FontAwesomeIcon icon={regular('coffee')} /> */}
         </span>
         </div>
         <div className="quick-access">
           <p><a href='#'>Docs</a></p>
 
           <img src="" alt="profile-picture" /> 
-          <span>Profile name</span>
+          <span>Bassey Hyonam</span>
         </div>
 
       </nav>

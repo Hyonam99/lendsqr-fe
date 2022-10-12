@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Authentication from './Authentication';
 import './style.css';
 import Dashboard from './Dashboard';
-import User_full_details from './User_full_details'
+import User_full_details from './UserFullDetails'
 
 function Page() {
   return (

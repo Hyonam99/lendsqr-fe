@@ -1,7 +1,7 @@
 import React from 'react'
-import Dashboard_header from './Dashboard_header'
-import Dashboard_sidebar from "./Dashboard_sidebar";
-import User_profile from './User_profile'
+import Dashboard_header from './DashboardHeader'
+import Dashboard_sidebar from "./DashboardSidebar";
+import User_profile from './UserProfile'
 import Backicon from './image_icons_asset/goback.svg'
 import './style.css'
 
