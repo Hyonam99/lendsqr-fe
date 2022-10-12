@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Authentication from './Authentication';
 import './style.css';
 import Dashboard from './Dashboard';
-import User_full_details from './UserFullDetails'
+import UserFullDetails from './UserFullDetails'
 
 function Page() {
   return (
@@ -17,8 +17,8 @@ function Page() {
         <Route path="/Dashboard">
         <Dashboard />
         </Route>
-        <Route path="/User_full_details">
-        <User_full_details />
+        <Route path="/UserFullDetails">
+        <UserFullDetails />
         </Route>
         
 

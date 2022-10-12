@@ -1,6 +1,7 @@
 import "./style.css";
 import Filter from './image_icons_asset/filter-button.svg'
 import { useState } from "react";
+import { Link } from 'react-router-dom'
 import Menu from './image_icons_asset/pop-up-icon.svg'
 import Prev from './image_icons_asset/prev btn.svg'
 import Next from './image_icons_asset/next btn.svg'
@@ -10,6 +11,8 @@ import Loan_s from './image_icons_asset/loans-savings.svg'
 
 
 function DataList({allblog}){
+
+  const userDB = JSON.parse(localStorage.getItem('allUsers'))
 
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(10);
@@ -35,13 +38,25 @@ function DataList({allblog}){
   }
 
   const changeDate = (CurrentDt) => {
-      Date (CurrentDt)
+    const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
+     const newDate = new Date(CurrentDt)
+     return newDate.toLocaleDateString(undefined, options)
   }
 
-  let userDB = JSON.parse(localStorage.getItem('allUsers'))
+  const changeStatus = (stat) => {
+        const newDate = Date(stat)
+     const checkStatus = Math.ceil(Date.parse(newDate) / 86400000)  // 86400000 is the number of milliseconds equals to a day
+     if(checkStatus >= 365){
+      return 'Pending'
+     }else{
+      return 'Inactive'
+     }
+  }
+
+
+  
   const userCount = userDB.length
   return(
-
     <>
        <section className="Dash-preview">
         <div className="card">
@@ -76,7 +91,7 @@ function DataList({allblog}){
         <th>PHONE NUMBER <img src={Filter}/></th>
         <th>DATE JOINED <img src={Filter}/></th>
         <th>STATUS <img src={Filter}/></th>
-        <th>ICON <img src={Filter}/></th>
+        <th></th>
       </tr>
       </thead>
       {allblog.map((blog) => (
@@ -89,8 +104,8 @@ function DataList({allblog}){
 <td>{blog.email} </td>
 <td>{blog.phoneNumber} </td>
 <td> {changeDate(blog.createdAt)} </td>
-<td>{changeDate(blog.lastActiveDate)} </td>       
-<td><img src={Menu}/></td>
+<td className="userStatus">{changeStatus(blog.lastActiveDate)} </td>       
+<td><Link to="/UserFullDetails"><img src={Menu}/></Link></td>
 </tr>  
       </tbody>
       )).slice(count1, count2)}
