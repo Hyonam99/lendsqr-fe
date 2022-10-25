@@ -219,25 +219,6 @@ nav input {
   padding: 15px 15px 15px 0;
 }
 
-.pagebreak {
-  padding: 8px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.pagebreak .pagination-butttons {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-}
-.pagebreak i {
-  padding: 2px 4px;
-  margin-right: 10px;
-  font-size: 0.7rem;
-  cursor: pointer;
-}
-
 .all-content {
   display: flex;
   flex-direction: column;
@@ -340,6 +321,32 @@ article p span {
   color: #213f7d;
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+.pagebreak {
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.paginateButtons {
+  width: 50%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(0deg, 0%, 96%);
+  gap: 5px;
+}
+
+.paginateButtons li {
+  color: black;
+}
+
+.activeButton {
+  background-color: aqua;
 }
 
 @media (max-width: 824px) {

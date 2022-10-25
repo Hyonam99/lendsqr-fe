@@ -253,26 +253,7 @@ nav{
   }
 }
 
-.pagebreak{
-  padding: 8px;
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 
-.pagination-butttons{
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-}
-  i{
-    padding:2px 4px;
-    margin-right:10px;
-    font-size: 0.7rem;
-    cursor:pointer;
-    }
-  
-}
 
 .all-content{
   display:flex;
@@ -387,6 +368,37 @@ article{
     }
   }
 }
+
+.pagebreak{
+  padding:0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+ }
+
+.paginateButtons{
+  width:50%;
+  height:40px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color:  hsl(0, 0%, 96%);
+  gap:5px;
+}
+
+.paginateButtons li{
+  color: black;
+}
+
+.activeButton{
+  background-color: aqua;
+}
+
+
+
+
+
 
 @media (max-width:824px){
 
