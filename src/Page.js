@@ -1,31 +1,15 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Authentication from './Authentication';
-import './style.css';
-import Dashboard from './Dashboard';
-import UserFullDetails from './UserFullDetails'
+import React from 'react'
+import MainAuth from './pages/Authentication/MainAuth'
+import { Routes, Route } from 'react-router-dom'
+import Admin from './pages/Admin_user_dashboard/Admin'
 
-function Page() {
+const Page = () => {
   return (
-    <Router>
-          <div>
-        <Switch>
-
-        <Route exact path="/">
-        <Authentication />
-        </Route>
-        <Route path="/Dashboard">
-        <Dashboard />
-        </Route>
-        <Route path="/UserFullDetails">
-        <UserFullDetails />
-        </Route>
-        
-
-        </Switch>
-        </div>
-  </Router>
-  );
+    <Routes>
+      <Route index element={<MainAuth />}/>
+      <Route path='/Admin' element={<Admin />}/>
+    </Routes>
+  )
 }
 
-export default Page;
+export default Page
