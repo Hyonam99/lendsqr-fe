@@ -1,5 +1,7 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
+import { convertDate } from '../../utilityFunctions';
+
 
 import "swiper/css";
 import "swiper/css/grid";
@@ -8,9 +10,28 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Grid, Pagination, Navigation, Autoplay } from "swiper";
+import { useLocation, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-const User = ({inW, inH}) => {
+const Dashboard = ({inW, allLoanUsers}) => {
+  
+const [dbUsers, setDbUsers] = useState(allLoanUsers);
 
+const dashBoardUsers = dbUsers.map((singleUser) => 
+<tr>
+                <td>{singleUser.name.first} {singleUser.name.last}</td>
+                <td>{singleUser.location.country}</td>
+                <td>{singleUser.email}</td>
+                <td>{singleUser.phone}</td>
+                <td>{convertDate(singleUser.registered.date)}</td>
+                <td><span className={singleUser.registered.age >= 10 ? 'inactive' : 'active'}>{singleUser.registered.age >= 10 ? 'Inactive' : 'Active'}</span></td>
+                <td><Link>view</Link></td>
+              </tr>
+)
+const activeUsers = dbUsers.filter((activeUser) => activeUser.registered.age <= 10 )
+useEffect(()=>{
+  console.log(allLoanUsers)
+}, [])
   
   return (
 
@@ -25,7 +46,8 @@ spaceBetween={0}
 pagination={{clickable: inW < 970 ? true : false,}}
 loop={inW < 970 ? true : false}
 autoplay={{
-  delay: 3000,         
+  delay: 3000,
+  disableOnInteraction: false,        
 }}
 navigation={inW < 970 ? true : false}
 modules={[Grid, Pagination, Navigation, Autoplay]}
@@ -36,30 +58,30 @@ modules={[Grid, Pagination, Navigation, Autoplay]}
         <div className="summary-card">
           <img src="" alt="" />
           <p>Users</p>
-          <p>100</p>
+          <p>{dbUsers.length}</p>
         </div>
         </SwiperSlide>
         <SwiperSlide>
         <div className="summary-card">
         <img src="" alt="" />
-          <p>Users</p>
-          <p>200</p>
-        </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-        <div className="summary-card">
-        <img src="" alt="" />
-          <p>Users</p>
-          <p>300</p>
+          <p>Active Users</p>
+          <p>{activeUsers.length}</p>
         </div>
         </SwiperSlide>
 
         <SwiperSlide>
         <div className="summary-card">
         <img src="" alt="" />
-          <p>Users</p>
-          <p>400</p>
+          <p>Users With Loans</p>
+          <p>{dbUsers.length}</p>
+        </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+        <div className="summary-card">
+        <img src="" alt="" />
+          <p>Users With Savings</p>
+          <p>{dbUsers.length}</p>
         </div>
         </SwiperSlide>
 
@@ -80,25 +102,20 @@ modules={[Grid, Pagination, Navigation, Autoplay]}
             </thead>
 
             <tbody>
-              <tr>
-                <td>Okamioahng</td>
-                <td>Nairobi</td>
-                <td>okami@mail.com</td>
-                <td>0812457845</td>
-                <td>Tue, Oct-22-2007</td>
-                <td>Active</td>
-                <td>view</td>
-              </tr>
+              {dashBoardUsers}
+              
             </tbody>
           </table>
         </div>
+        
       </div>
+     
     </section>
 
   )
 }
 
-export default User
+export default Dashboard
 
 
 {/* <div className="user-display-summary"> */}

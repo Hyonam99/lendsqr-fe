@@ -22,7 +22,8 @@ const Products = ({inW, inH}) => {
         pagination={{clickable: inW < 970 ? true : false,}}
         loop={inW < 970 ? true : false}
         autoplay={{
-          delay: 3000,         
+          delay: 3000,
+          disableOnInteraction: false,            
         }}
         navigation={inW < 970 ? true : false}
         modules={[Grid, Pagination, Navigation, Autoplay]}

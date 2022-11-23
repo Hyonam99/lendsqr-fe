@@ -12,6 +12,10 @@ body {
   padding: 0;
 }
 
+a{
+  text-decoration: none;
+}
+
 @mixin reset-text-spacing {
   margin: 0;
   padding: 0;
@@ -432,6 +436,7 @@ small {
 
   /* Center slide text vertically */
   display: flex;
+  
   flex-direction: column;
   
   
@@ -440,9 +445,10 @@ small {
     box-shadow: 0px 1px 1px 2px rgba(0, 0, 0, 0.3);
     border-right:8px solid $primary-color;
     border-radius: 4%;
-    padding:0.6rem;
+    padding:0.6rem 1rem;
     background-color: white;
-    width:80%;
+    width:76%;
+    height:100px;
   }
 
  
@@ -505,7 +511,7 @@ small {
 }
 
 .swiper-wrapper{
-  padding: 0px 5px;
+  padding: 10px 5px;
 }
 
 .user-display-table{
@@ -544,6 +550,26 @@ small {
   }
 }
 
+.active,
+.inactive{
+  padding:2px 6px;
+  border:none;
+  border-radius: 16px;
+  display:block;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.active{
+  color:hsl(120, 100%, 25%);
+  background-color: hsl(120, 100%, 85%);
+}
+
+.inactive{
+  color:hsl(0, 100%, 30%);
+  background-color: hsl(0, 100%, 90%);
+}
 
 
 
@@ -781,6 +807,40 @@ small {
     width: 90%;
   }
 
+  .swiper {
+     
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+      background-color: none;
+      background-image: none;
+    }
+  
+    .swiper-button-next {
+      display: none;
+  
+    }
+    
+    .swiper-button-next::after {
+      display: none;
+      background-color: none;
+      background-image: none;
+    }
+    .swiper-button-prev {
+      display: none;
+      background-color: none;
+      background-image: none;
+      
+    }
+    
+    .swiper-button-prev::after {
+      display: none;
+      background-color: none;
+      background-image: none;
+    }
+  
+}  
+
   .swiper-wrapper{
     padding-left:0px;
     padding-right:0px;
@@ -792,8 +852,8 @@ small {
     justify-content: center;
   
     .summary-card{
-       width:76%;
-       margin:0;
+       width:88%;
+       margin:0 8px;
     }
   
   }
@@ -900,6 +960,8 @@ small {
     .swiper-button-prev,
     .swiper-button-next {
       display: none;
+      background-color: none;
+      background-image: none;
     }
   
     .swiper-button-next {
@@ -909,34 +971,22 @@ small {
     
     .swiper-button-next::after {
       display: none;
+      background-color: none;
+      background-image: none;
     }
     .swiper-button-prev {
       display: none;
+      background-color: none;
+      background-image: none;
       
     }
     
     .swiper-button-prev::after {
       display: none;
+      background-color: none;
+      background-image: none;
     }
   
-    .swiper-button-prev,
-  .swiper-rtl .swiper-button-next {
-    left: 0px;
-    right: auto;
-  }
-  .swiper-button-prev:after,
-  .swiper-rtl .swiper-button-next:after {
-    content: 'prev';
-  }
-  .swiper-button-next,
-  .swiper-rtl .swiper-button-prev {
-    right: 0px;
-    left: auto;
-  }
-  .swiper-button-next:after,
-  .swiper-rtl .swiper-button-prev:after {
-    content: 'next';
-  }
 }  
 
 
@@ -949,7 +999,7 @@ small {
   padding:0;
   margin: 0;
   .summary-card{
-     width:90%;
+     width:85%;
      margin:0;
   }
   

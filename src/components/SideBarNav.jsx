@@ -15,15 +15,15 @@ const SideBarNav = ({showUser, showAnalysis, showProduct}) => {
         </div>
 
         <div className="sub-section users">
-        <Link onClick={()=> {showAnalysis(false); showProduct(false); showUser(true)}}><HiUsers/>users</Link>
+        <Link onClick={()=> {showAnalysis(false); showProduct(false); showUser(true)}}><HiUsers/>Users</Link>
         </div>
 
         <div className="sub-section analysis">
-        <Link onClick={()=> {showUser(false); showProduct(false); showAnalysis(true)}}><HiChartPie/>analysis</Link>
+        <Link onClick={()=> {showUser(false); showProduct(false); showAnalysis(true)}}><HiChartPie/>Analysis</Link>
         </div>
 
         <div className="sub-section products">
-        <Link onClick={()=> {showUser(false); showAnalysis(false); showProduct(true)}}><HiCube/>products</Link>
+        <Link onClick={()=> {showUser(false); showAnalysis(false); showProduct(true)}}><HiCube/>Products</Link>
         </div>
 
     </section>
