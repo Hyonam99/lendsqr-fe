@@ -44,7 +44,7 @@ const LoginForm = () => {
     }),
 
     onSubmit: (values) => {
-      navigate('/Admin', {state:{values}})
+      navigate('/Dashboard', {state:{values}})
     },
   });
 
