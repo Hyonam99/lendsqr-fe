@@ -12,7 +12,7 @@ import Dashboard from "./Dashboard";
 const Admin = () => {
 
   const userBase = 'https://randomuser.me/api/?results=5'
-  const localUsers = JSON.parse(localStorage.getItem('onlineUsers'));
+  const localUsers = JSON.parse(localStorage.getItem('onlineUsers')) || [];
   
   const [nuser, setNUser] = useState(localUsers);
   const [terror, setTError] = useState(null);
