@@ -277,6 +277,9 @@ small {
   background-color: hsl(0deg, 0%, 98%);
   overflow: hidden;
 }
+.mainadmin-child-container .admin-navigation-sideBar {
+  background-color: #39cdcc;
+}
 
 .side-bar-main-navigation {
   background-color: #39cdcc;
@@ -482,6 +485,71 @@ small {
 .inactive {
   color: hsl(0deg, 100%, 30%);
   background-color: hsl(0deg, 100%, 90%);
+}
+
+.user-profile-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-profile-intro {
+  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.5);
+  padding: 0.4rem;
+  margin-bottom: 2%;
+  border-radius: 4px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.user-profile-intro .user-profile-intro-card {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+.user-profile-intro .user-profile-intro-card .user-profile-intro-picture {
+  border: none;
+  border-radius: 50%;
+  height: 6rem;
+  width: 6rem;
+  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.5);
+}
+.user-profile-intro .user-profile-intro-card .user-profile-intro-picture img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.user-profile-details {
+  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.5);
+  padding: 0.4rem;
+  margin-top: 2%;
+  border-radius: 4px;
+  background-color: white;
+}
+.user-profile-details .user-profile-details-display-info {
+  border-bottom: 1px solid grey;
+}
+.user-profile-details .user-profile-details-display-info h4 {
+  color: #213f7d;
+  font-size: 1.05rem;
+}
+.user-profile-details .user-profile-details-display-info .user-profile-details-display-info-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.user-profile-details .user-profile-details-display-info .user-profile-details-display-info-card > p {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: #213f7d;
+  font-weight: 500;
+}
+.user-profile-details .user-profile-details-display-info .user-profile-details-display-info-card > p > span {
+  font-size: 0.9rem;
+  color: hsl(220deg, 58%, 28%);
+  font-weight: 505;
+}
+.user-profile-details .user-profile-details-display-info:last-child {
+  border-bottom: none;
 }
 
 @media (max-width: 968px) {

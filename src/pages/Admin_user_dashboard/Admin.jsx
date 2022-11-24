@@ -6,6 +6,7 @@ import SideBarNav from "../../components/SideBarNav";
 import Analysis from "./Analysis";
 import Products from "./Products";
 import Dashboard from "./Dashboard";
+import UserProfile from "../User_dashboard/UserProfile";
 
 
 
@@ -17,12 +18,12 @@ const Admin = () => {
   const [nuser, setNUser] = useState(localUsers);
   const [terror, setTError] = useState(null);
   const [user, setUser] = useState(true);
+  const [userProfile, setUserProfile] = useState(false);
   const [analysis, setAnalysis] = useState(false);
   const [product, setProduct] = useState(false);
   const [checkUser, setCheckUser] = useState(false)
-
   const [windowSize, setWindowSize] = useState(getWindowSize());
-
+  
 
   useEffect(() => {
     function handleWindowResize() {
@@ -39,12 +40,14 @@ const Admin = () => {
   useEffect(()=>{
     axios.get(userBase)
       .then((response) => {
-        localStorage.setItem('onlineUsers', JSON.stringify(response.data.results))    
+        localStorage.setItem('onlineUsers', JSON.stringify(response.data.results))   
       }).catch((terror) => {
           setTError(terror)
       });
       
   }, [])
+
+  
 
 
   
@@ -63,6 +66,7 @@ const Admin = () => {
         {user && <Dashboard inW={windowSize.innerWidth} inH={windowSize.innerHeight} allLoanUsers={nuser}/>}
         {analysis && <Analysis />}
         {product && <Products inW={windowSize.innerWidth} inH={windowSize.innerHeight}/>}
+       
         </section>
 
       </section>

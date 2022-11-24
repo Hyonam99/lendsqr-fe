@@ -12,10 +12,20 @@ import "swiper/css/navigation";
 import { Grid, Pagination, Navigation, Autoplay } from "swiper";
 import { useLocation, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import UserProfile from '../User_dashboard/UserProfile';
 
 const Dashboard = ({inW, allLoanUsers}) => {
   
 const [dbUsers, setDbUsers] = useState(allLoanUsers);
+const [seeUser, setSeeUser] = useState(false);
+  const [moveUser, setMoveUser] = useState({})  
+
+  const viewUser=(singleUser)=>{
+    setMoveUser(singleUser)
+    setSeeUser(true)
+  }
+
+
 
 const dashBoardUsers = dbUsers.map((singleUser) => 
 <tr>
@@ -25,7 +35,7 @@ const dashBoardUsers = dbUsers.map((singleUser) =>
                 <td>{singleUser.phone}</td>
                 <td>{convertDate(singleUser.registered.date)}</td>
                 <td><span className={singleUser.registered.age >= 10 ? 'inactive' : 'active'}>{singleUser.registered.age >= 10 ? 'Inactive' : 'Active'}</span></td>
-                <td><Link>view</Link></td>
+                <td><Link onClick={()=>{viewUser(singleUser)}}>view</Link></td>
               </tr>
 )
 const activeUsers = dbUsers.filter((activeUser) => activeUser.registered.age <= 10 )
@@ -34,9 +44,9 @@ useEffect(()=>{
 }, [])
   
   return (
-
+    <>
+{seeUser ?   <UserProfile theUser={moveUser} goBack={setSeeUser}/> :
     <section>
-      
       <Swiper
 slidesPerView={inW < 600 ? 1 : inW < 970 ? 2 : 4}
 grid={{
@@ -86,8 +96,6 @@ modules={[Grid, Pagination, Navigation, Autoplay]}
         </SwiperSlide>
 
         </Swiper>
-        
-
       <div className="user-display-table">
         <div className="table-parent-container">
           <table>
@@ -109,16 +117,17 @@ modules={[Grid, Pagination, Navigation, Autoplay]}
         </div>
         
       </div>
-     
-    </section>
+    </section> 
 
+   
+
+}
+     </>
   )
 }
 
 export default Dashboard
 
-
-{/* <div className="user-display-summary"> */}
 
 
 

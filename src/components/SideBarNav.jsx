@@ -11,11 +11,11 @@ const SideBarNav = ({showUser, showAnalysis, showProduct}) => {
   return (
     <section className="side-bar-main-navigation">
         <div className="sub-section organization">
-        <p>Dashboard</p>
+        {/* <p>Dashboard</p> */}
         </div>
 
         <div className="sub-section users">
-        <Link onClick={()=> {showAnalysis(false); showProduct(false); showUser(true)}}><HiUsers/>Users</Link>
+        <Link onClick={()=> {showAnalysis(false); showProduct(false); showUser(true)}}><HiUsers/>Dashboard</Link>
         </div>
 
         <div className="sub-section analysis">
