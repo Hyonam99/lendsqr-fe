@@ -13,6 +13,7 @@ body {
 
 a {
   text-decoration: none;
+  color:hsl(220, 58%, 51%);
 }
 
 @mixin reset-text-spacing {
@@ -568,13 +569,11 @@ small {
 }
 
 .active {
-  color: hsl(120, 100%, 25%);
-  // background-color: hsl(120, 100%, 85%);
+  color: hsl(120, 100%, 55%);
 }
 
 .inactive {
-  color: hsl(0, 100%, 30%);
-  // background-color: hsl(0, 100%, 90%);
+  color: hsl(0, 100%, 60%);
 }
 
 
@@ -638,11 +637,32 @@ small {
 }
 
 
+.goBack-button{
+  margin-bottom:1%;
+  display:flex;
+  gap:4px;
+  align-items: center;
+  background-color: transparent;
+  border:none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color:$primary-text-color;
+
+  svg{
+    width:20px;
+    height:20px;
+  }
+}
 
 .user-profile-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom:2%;
+
+  .action-buttons{
+    gap:10px;
+  }
 }
 
 .user-profile-intro {
@@ -653,10 +673,15 @@ small {
   background-color: white;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-flow:column;  
+  grid-gap:20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  
 
   .user-profile-intro-card {
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 100px 200px;
 
     .user-profile-intro-picture {
       border: none;
@@ -687,12 +712,18 @@ small {
     .user-profile-details-display-info-card {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-auto-flow:column;  
+      grid-gap:20px;
+      overflow-x: auto;
+      overflow-y: hidden;
       > p {
         display: flex;
         flex-direction: column;
+        flex-wrap: nowrap;
         font-size: 0.8rem;
         color: $primary-text-color;
         font-weight: 500;
+        width:216px;
 
         > span {
           font-size: 0.9rem;

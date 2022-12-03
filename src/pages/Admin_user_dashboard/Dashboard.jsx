@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import ReactPaginate from 'react-paginate';
+import { AdminContext } from '../../Contexts/AdminContext';
 
 import Users from '../../icons_asset/users.svg'
 import AUsers from '../../icons_asset/active-users.svg'
@@ -20,15 +21,16 @@ import "swiper/css/navigation";
 // import required modules
 import { Grid, Pagination, Navigation, Autoplay } from "swiper";
 import { useLocation, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import UserProfile from '../User_dashboard/UserProfile';
 
 
-const Dashboard = ({inW, allLoanUsers}) => {
 
+const Dashboard = ({inW}) => {
+
+const {renderedUsers, searchValue} = useContext(AdminContext)
 const iconstyle = { fontSize: "24px", cursor: "pointer" };
   
-const [dbUsers, setDbUsers] = useState(allLoanUsers);
+const [dbUsers, setDbUsers] = useState(renderedUsers);
 const [seeUser, setSeeUser] = useState(false);
 const [moveUser, setMoveUser] = useState({})  
 const [pageNumber, setPageNumber] = useState(0)
@@ -53,6 +55,30 @@ const dashBoardUsers = dbUsers.slice(pageVisited, pageVisited + userPerPage).map
                 <td><Link onClick={()=>{viewUser(singleUser)}}>view</Link></td>
               </tr>
 )
+
+//TODO : filter your users by a specific criteria and render them with the pagination
+
+const filteredDashBoardUsers = dbUsers.filter((evenUser) => {
+if(searchValue.length > 0 || searchValue != null || searchValue != undefined){
+  return evenUser.name.first.includes(searchValue)
+} else if (searchValue === null || searchValue === undefined){
+  return evenUser
+}
+  }).slice(pageVisited, pageVisited + userPerPage).map((singleUser) => 
+<tr>
+                <td>{singleUser.name.first} {singleUser.name.last}</td>
+                <td>{singleUser.location.country}</td>
+                <td>{singleUser.email}</td>
+                <td>{singleUser.phone}</td>
+                <td>{convertDate(singleUser.registered.date)}</td>
+                <td><span className={singleUser.registered.age >= 10 ? 'inactive' : 'active'}>{singleUser.registered.age >= 10 ? 'Inactive' : 'Active'}</span></td>
+                <td><Link onClick={()=>{viewUser(singleUser)}}>view</Link></td>
+              </tr>
+)
+
+//TODO : filter your users by a specific criteria and render them with the pagination
+
+
 const activeUsers = dbUsers.filter((activeUser) => activeUser.registered.age <= 10 )
 
 const pageCount = Math.ceil(dbUsers.length / userPerPage)
@@ -130,7 +156,7 @@ modules={[Grid, Pagination, Navigation, Autoplay]}
             </thead>
 
             <tbody>
-              {dashBoardUsers}
+              {filteredDashBoardUsers}
               
             </tbody>
           </table>

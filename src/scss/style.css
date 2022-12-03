@@ -6,6 +6,7 @@ body {
 
 a {
   text-decoration: none;
+  color: hsl(220deg, 58%, 51%);
 }
 
 p {
@@ -500,11 +501,11 @@ small {
 }
 
 .active {
-  color: hsl(120deg, 100%, 25%);
+  color: hsl(120deg, 100%, 55%);
 }
 
 .inactive {
-  color: hsl(0deg, 100%, 30%);
+  color: hsl(0deg, 100%, 60%);
 }
 
 .paginateButtons {
@@ -559,10 +560,30 @@ small {
   border-bottom: none;
 }
 
+.goBack-button {
+  margin-bottom: 1%;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #213f7d;
+}
+.goBack-button svg {
+  width: 20px;
+  height: 20px;
+}
+
 .user-profile-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 2%;
+}
+.user-profile-actions .action-buttons {
+  gap: 10px;
 }
 
 .user-profile-intro {
@@ -573,10 +594,14 @@ small {
   background-color: white;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  grid-gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 .user-profile-intro .user-profile-intro-card {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 100px 200px;
 }
 .user-profile-intro .user-profile-intro-card .user-profile-intro-picture {
   border: none;
@@ -607,13 +632,19 @@ small {
 .user-profile-details .user-profile-details-display-info .user-profile-details-display-info-card {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  grid-gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 .user-profile-details .user-profile-details-display-info .user-profile-details-display-info-card > p {
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
   font-size: 0.8rem;
   color: #213f7d;
   font-weight: 500;
+  width: 216px;
 }
 .user-profile-details .user-profile-details-display-info .user-profile-details-display-info-card > p > span {
   font-size: 0.9rem;

@@ -6,6 +6,7 @@ import SideBarNav from "../../components/SideBarNav";
 import Analysis from "./Analysis";
 import Products from "./Products";
 import Dashboard from "./Dashboard";
+import { AdminContext } from "../../Contexts/AdminContext";
 
 // const customClient = axios.create({
 //    userBase : "https://randomuser.me/api"
@@ -19,6 +20,7 @@ const Admin = () => {
   const [product, setProduct] = useState(false);
   const [windowSize, setWindowSize] = useState(getWindowSize());
   const [error, setError] = useState(null);
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
     function handleWindowResize() {
@@ -45,6 +47,7 @@ const Admin = () => {
 
   return (
     <section className="mainadmin-parent-container">
+      <AdminContext.Provider value={{renderedUsers, searchValue, setSearchValue}}>
       <Navbar />
 
       <section className="mainadmin-child-container">
@@ -61,7 +64,6 @@ const Admin = () => {
             <Dashboard
               inW={windowSize.innerWidth}
               inH={windowSize.innerHeight}
-              allLoanUsers={renderedUsers}
             />
           )}
           {analysis && <Analysis />}
@@ -73,6 +75,7 @@ const Admin = () => {
           )}
         </section>
       </section>
+      </AdminContext.Provider>
     </section>
   );
 };

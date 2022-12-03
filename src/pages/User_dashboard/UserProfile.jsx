@@ -1,17 +1,19 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { toCurrency } from "../../utilityFunctions";
+import { BsArrowLeft } from "react-icons/bs";
+
 
 const UserProfile = ({ theUser, goBack }) => {
   return (
     <section>
-      <button
+      <button className="goBack-button"
         onClick={() => {
           goBack(false);
         }}
       >
         {" "}
-        Go back
+        <BsArrowLeft/> go back
       </button>
       <div className="user-profile-actions">
         <p>User Details</p>
@@ -45,20 +47,20 @@ const UserProfile = ({ theUser, goBack }) => {
         <div className="user-profile-details-display-info">
           <h4>Educational Information</h4>
           <span className="user-profile-details-display-info-card">
-            <p>Full Name <span>Name here</span></p>
-            <p>Phone Number <span>Number here</span></p>
-            <p>Email <span>Email here</span></p>
-            <p>Gender <span>Gender here</span></p>
+            <p>Qualification <span>BSc. Engineering</span></p>
+            <p>Institution <span>Cambridge</span></p>
+            <p>Location <span>United States</span></p>
+            <p>Year <span>2007</span></p>
           </span>
         </div>
 
         <div className="user-profile-details-display-info">
           <h4>Social Information</h4>
           <span className="user-profile-details-display-info-card">
-            <p>Full Name <span>Name here</span></p>
-            <p>Phone Number <span>Number here</span></p>
-            <p>Email <span>Email here</span></p>
-            <p>Gender <span>Gender here</span></p>
+            <p>Instagram<span>@Instagram</span></p>
+            <p>Twitter <span>@twitter</span></p>
+            <p>Facebook <span>@facebook</span></p>
+            <p>Linkedin <span>-</span></p>
           </span>
         </div>
       </section>
