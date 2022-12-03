@@ -2,9 +2,10 @@ import React, {useContext} from "react"
 import { FiSearch } from "react-icons/fi";
 import { AdminContext } from "../Contexts/AdminContext";
 
-const searchInput = () => {
+const SearchInput = () => {
 
-  const {setSearchValue} = useContext(AdminContext)
+  const {setSearchValue} = useContext(AdminContext);
+
   const handleChange = (e) => {
     setSearchValue(e.target.value)
   }
@@ -17,4 +18,4 @@ const searchInput = () => {
   )
 }
 
-export default searchInput
+export default SearchInput

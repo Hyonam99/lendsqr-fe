@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from "./Logo";
-import SearchInput from "./searchInput";
+import SearchInput from "./SearchInput";
 import ProfileNavigator from "./profileNavigator";
 import { FiAlignRight } from "react-icons/fi";
 import { FiX } from "react-icons/fi";

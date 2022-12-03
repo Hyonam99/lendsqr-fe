@@ -27,7 +27,8 @@ import UserProfile from '../User_dashboard/UserProfile';
 
 const Dashboard = ({inW}) => {
 
-const {renderedUsers, searchValue} = useContext(AdminContext)
+const {renderedUsers, searchValue} = useContext(AdminContext);
+
 const iconstyle = { fontSize: "24px", cursor: "pointer" };
   
 const [dbUsers, setDbUsers] = useState(renderedUsers);
