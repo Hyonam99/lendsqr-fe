@@ -662,6 +662,10 @@ small {
 
   .action-buttons{
     gap:10px;
+
+    button{
+      cursor:pointer;
+    }
   }
 }
 
