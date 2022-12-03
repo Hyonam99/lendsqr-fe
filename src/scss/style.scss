@@ -47,6 +47,10 @@ a {
   flex-wrap: nowrap;
 }
 
+p{
+  @include reset-text-spacing()
+}
+
 .logo-form {
   visibility: hidden;
 }
@@ -318,18 +322,18 @@ small {
   }
 
   .admin-navigation-sideBar {
-    background-color: $primary-color;
+    background-color: white;
   }
 }
 
 .side-bar-main-navigation {
-  // box-shadow: 5px 1px 8px 10px rgba(0, 0, 0, 0.5);
-  background-color: $primary-color;
+  padding-top:20%;
+  background-color: white;
   color: $primary-text-color;
   font-weight: 800;
   display: flex;
   flex-direction: column;
-  height: 88vh;
+  height: 95vh;
   gap: 4%;
 
   .sub-section {
@@ -345,7 +349,7 @@ small {
       height: 100%;
       align-items: center;
       gap: 4%;
-      color: white;
+      color: $primary-text-color;
 
       svg {
         width: 24px;
@@ -440,6 +444,24 @@ small {
     background-color: white;
     width: 76%;
     height: 100px;
+
+    p.user-type{
+      font-size: 0.865rem;
+      color: grey;
+    }
+  }
+
+  .summary-card.plain-user{
+    border-right: 8px solid #EA61FF;
+  }
+  .summary-card.active-user{
+    border-right: 8px solid #AE8FFF;
+  }
+  .summary-card.loan-user{
+    border-right: 8px solid #F99482;
+  }
+  .summary-card.savings-user{
+    border-right: 8px solid #FF0000;
   }
 }
 
@@ -547,13 +569,75 @@ small {
 
 .active {
   color: hsl(120, 100%, 25%);
-  background-color: hsl(120, 100%, 85%);
+  // background-color: hsl(120, 100%, 85%);
 }
 
 .inactive {
   color: hsl(0, 100%, 30%);
-  background-color: hsl(0, 100%, 90%);
+  // background-color: hsl(0, 100%, 90%);
 }
+
+
+
+.paginateButtons{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap:16px;
+}
+
+.table-pagination{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+}
+
+
+.paginateButtons li {
+ list-style-type: none;
+  text-decoration: none;
+  color:black;
+  padding:6px 7px;
+  font-size: 1rem;
+}
+
+.paginateButtons li a{
+  text-decoration: none;
+  color:black;
+  padding:6px 7px;
+  font-size: 1rem;
+}
+
+.paginateButtons li a:first-child{
+  text-decoration: none;
+  color:black;
+  padding:0px;
+  border-bottom: none;
+}
+
+
+
+
+.paginateButtons li:hover{
+  border-bottom:2px solid $primary-color;
+  cursor: pointer;
+}
+
+
+.activeButton{
+ border-bottom:2px solid $primary-color;
+}
+
+
+.disabledButton svg{
+ pointer-events: none;
+ cursor:default;
+ fill:grey;
+ border-bottom: none;
+}
+
+
 
 .user-profile-actions {
   display: flex;
@@ -784,29 +868,28 @@ small {
   .side-bar-main-navigation {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: auto;
     padding: 0;
-    gap: 4%;
+    gap: 2%;
 
     .sub-section {
       padding: 0;
       margin: 0;
       p {
-        padding: 8px;
+        display: none;
       }
 
       a {
-        padding: 4px;
+        padding: 8px 0px;
         position: relative;
         text-decoration: none;
         display: inline-flex;
         width: 100%;
         height: auto;
         align-items: center;
-        gap: 4%;
-        color: white;
+        gap: 2%;
 
         svg {
           width: 24px;
@@ -815,7 +898,7 @@ small {
       }
       a:hover {
         background-color: hsl(180, 60%, 97%);
-        border-left: 5px solid $primary-text-color;
+        border-left: none;
         color: $primary-text-color;
       }
     }
@@ -884,7 +967,7 @@ small {
   .side-bar-main-navigation {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: auto;
     gap: 5%;
@@ -897,14 +980,13 @@ small {
       }
 
       a {
-        padding: 24px 8px;
+        padding: 8px 0px;
         text-decoration: none;
         display: inline-flex;
         width: 100%;
         height: 100%;
         align-items: center;
         gap: 2%;
-        color: white;
 
         svg {
           width: 24px;
@@ -932,7 +1014,7 @@ small {
   .side-bar-main-navigation {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: auto;
     gap: 2%;
@@ -945,14 +1027,13 @@ small {
       }
 
       a {
-        padding: 24px 8px;
+        padding: 8px 0px;
         text-decoration: none;
         display: inline-flex;
         width: 100%;
         height: 100%;
         align-items: center;
         gap: 2%;
-        color: white;
 
         svg {
           width: 24px;
@@ -1003,11 +1084,11 @@ small {
   }
 
   .swiper-slide {
-    padding: 0;
+    padding-left: 0.1rem;
     margin: 0;
     .summary-card {
-      width: 85%;
-      margin: 0;
+      width: 78%;
+      margin-left:0.5rem;
     }
   }
 
@@ -1017,5 +1098,41 @@ small {
   .product-card.four {
     width: 98%;
     margin: 0;
+  }
+}
+
+@media (max-width:368px){
+  .side-bar-main-navigation {
+    padding-top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    gap: 2%;
+
+    .sub-section {
+      padding: 0;
+      margin: 0;
+      p {
+        display: none;
+      }
+
+      a {
+        padding: 8px 0px;
+        text-decoration: none;
+        display: inline-flex;
+        width: 100%;
+        font-size: 0.8rem;
+        height: 100%;
+        align-items: center;
+        gap: 1%;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
   }
 }

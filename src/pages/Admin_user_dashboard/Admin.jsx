@@ -1,82 +1,96 @@
 import React from "react";
-import axios from 'axios'
-import { useState, useEffect } from 'react';
+import axios from "axios";
+import { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import SideBarNav from "../../components/SideBarNav";
 import Analysis from "./Analysis";
 import Products from "./Products";
 import Dashboard from "./Dashboard";
-import UserProfile from "../User_dashboard/UserProfile";
 
-
-
+// const customClient = axios.create({
+//    userBase : "https://randomuser.me/api"
+// });
 const Admin = () => {
+  const userBase = "https://randomuser.me/api/?results=20";  
 
-  const userBase = 'https://randomuser.me/api/?results=5'
-  const localUsers = JSON.parse(localStorage.getItem('onlineUsers')) || [];
-  
-  const [nuser, setNUser] = useState(localUsers);
-  const [terror, setTError] = useState(null);
+  const [renderedUsers, setRenderedUsers] = useState(null);
   const [user, setUser] = useState(true);
-  const [userProfile, setUserProfile] = useState(false);
   const [analysis, setAnalysis] = useState(false);
   const [product, setProduct] = useState(false);
-  const [checkUser, setCheckUser] = useState(false)
   const [windowSize, setWindowSize] = useState(getWindowSize());
-  
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     function handleWindowResize() {
       setWindowSize(getWindowSize());
     }
 
-    window.addEventListener('resize', handleWindowResize);
+    window.addEventListener("resize", handleWindowResize);
 
     return () => {
-      window.removeEventListener('resize', handleWindowResize);
+      window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
 
-  useEffect(()=>{
-    axios.get(userBase)
-      .then((response) => {
-        localStorage.setItem('onlineUsers', JSON.stringify(response.data.results))   
-      }).catch((terror) => {
-          setTError(terror)
-      });
-      
-  }, [])
+  useEffect(() => {
+    async function getCloudUsers (){
+      const cloudResponse = await axios.get(userBase);
+      setRenderedUsers(cloudResponse.data.results)
+    }
 
-  
+    getCloudUsers()
+  }, []);
+  if (error) return `please refresh your page an error occured`;
+  if (!renderedUsers) return `No users found check command again`;
 
-
-  
   return (
     <section className="mainadmin-parent-container">
-      
       <Navbar />
 
       <section className="mainadmin-child-container">
-
         <section className="admin-navigation-sideBar">
-         <SideBarNav showUser={setUser} showAnalysis={setAnalysis} showProduct={setProduct}/>
+          <SideBarNav
+            showUser={setUser}
+            showAnalysis={setAnalysis}
+            showProduct={setProduct}
+          />
         </section>
 
         <section className="admin-data-info">
-        {user && <Dashboard inW={windowSize.innerWidth} inH={windowSize.innerHeight} allLoanUsers={nuser}/>}
-        {analysis && <Analysis />}
-        {product && <Products inW={windowSize.innerWidth} inH={windowSize.innerHeight}/>}
-       
+          {user && (
+            <Dashboard
+              inW={windowSize.innerWidth}
+              inH={windowSize.innerHeight}
+              allLoanUsers={renderedUsers}
+            />
+          )}
+          {analysis && <Analysis />}
+          {product && (
+            <Products
+              inW={windowSize.innerWidth}
+              inH={windowSize.innerHeight}
+            />
+          )}
         </section>
-
       </section>
     </section>
   );
 };
 
 function getWindowSize() {
-  const {innerWidth, innerHeight} = window;
-  return {innerWidth, innerHeight};
+  const { innerWidth, innerHeight } = window;
+  return { innerWidth, innerHeight };
 }
 
 export default Admin;
+
+
+
+/***************************************************
+ *  axios.get(userBase).then((response) => {
+      setRenderedUsers(response.data.results)
+     }).catch(error => {
+       setError(error)
+     })
+ ****************************************************/
+ 
