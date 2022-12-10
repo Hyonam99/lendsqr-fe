@@ -7,6 +7,7 @@ const SearchInput = () => {
   const {setSearchValue} = useContext(AdminContext);
 
   const handleChange = (e) => {
+    console.log(e.target.value)
     setSearchValue(e.target.value)
   }
 

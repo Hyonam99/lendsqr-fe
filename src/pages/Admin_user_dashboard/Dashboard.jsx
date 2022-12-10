@@ -58,14 +58,23 @@ const dashBoardUsers = dbUsers.slice(pageVisited, pageVisited + userPerPage).map
 )
 
 //TODO : filter your users by a specific criteria and render them with the pagination
-
+const firstnameQuery = searchValue.split(' ')[0]
+const lastnameQuery = searchValue.split(' ')[1]
 const filteredDashBoardUsers = dbUsers.filter((evenUser) => {
-if(searchValue.length > 0 || searchValue != null || searchValue != undefined){
-  return evenUser.name.first.includes(searchValue)
+// if(searchValue.length > 0 || searchValue != null || searchValue != undefined)
+// if((evenUser.name.first.toLowerCase().includes(searchValue)||evenUser.name.last.toLowerCase().includes(searchValue)) && (searchValue.length > 0 || searchValue != null || searchValue != undefined))
+if ((evenUser.name.first.toLowerCase().includes(firstnameQuery) 
+&& (!lastnameQuery || evenUser.name.last.toLowerCase().includes(lastnameQuery))) 
+|| evenUser.name.last.toLowerCase().includes(searchValue) 
+|| (evenUser.name.first.includes(firstnameQuery) 
+&& (!lastnameQuery || evenUser.name.last.includes(lastnameQuery)))
+|| evenUser.name.last.includes(searchValue) 
+ ){
+  return evenUser
 } else if (searchValue === null || searchValue === undefined){
   return evenUser
 }
-  }).slice(pageVisited, pageVisited + userPerPage).map((singleUser) => 
+  }).slice(pageVisited, pageVisited + userPerPage).map((singleUser) =>
 <tr>
                 <td>{singleUser.name.first} {singleUser.name.last}</td>
                 <td>{singleUser.location.country}</td>
