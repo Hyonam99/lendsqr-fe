@@ -100,105 +100,95 @@ const changePage = ({selected}) => {
   
   return (
     <>
-{seeUser ?   <UserProfile theUser={moveUser} goBack={setSeeUser}/> :
-   
-    <section>
-      <Swiper
-slidesPerView={inW < 600 ? 1 : inW < 1200 ? 2 : 4}
-grid={{
-  rows: 1,
-}}
-spaceBetween={0}
-pagination={{clickable: inW < 1200 ? true : false,}}
-loop={inW < 970 ? true : false}
-autoplay={{
-  delay: 3000,
-  disableOnInteraction: false,        
-}}
-navigation={inW < 970 ? true : false}
-modules={[Grid, Pagination, Navigation, Autoplay]}
+      {seeUser ? (
+        <UserProfile theUser={moveUser} goBack={setSeeUser} />
+      ) : (
+        <section>
+          <Swiper
+            slidesPerView={inW < 600 ? 1 : inW < 1200 ? 2 : 4}
+            grid={{
+              rows: 1,
+            }}
+            spaceBetween={0}
+            pagination={{ clickable: inW < 1200 ? true : false }}
+            loop={inW < 970 ? true : false}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            navigation={inW < 970 ? true : false}
+            modules={[Grid, Pagination, Navigation, Autoplay]}
+          >
+            <SwiperSlide>
+              <div className="summary-card plain-user">
+                <img src={Users} alt="" />
+                <p className="user-type">Users</p>
+                <p>{dbUsers.length}</p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="summary-card active-user">
+                <img src={AUsers} alt="" />
+                <p className="user-type">Active Users</p>
+                <p>{activeUsers.length}</p>
+              </div>
+            </SwiperSlide>
 
->
+            <SwiperSlide>
+              <div className="summary-card loan-user">
+                <img src={Loans} alt="" />
+                <p className="user-type">Users With Loans</p>
+                <p>{dbUsers.length}</p>
+              </div>
+            </SwiperSlide>
 
-<SwiperSlide>
-        <div className="summary-card plain-user">
-          <img src={Users} alt="" />
-          <p className='user-type'>Users</p>
-          <p>{dbUsers.length}</p>
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className="summary-card active-user">
-        <img src={AUsers} alt="" />
-          <p className='user-type'>Active Users</p>
-          <p>{activeUsers.length}</p>
-        </div>
-        </SwiperSlide>
+            <SwiperSlide>
+              <div className="summary-card savings-user">
+                <img src={Savings} alt="" />
+                <p className="user-type">Users With Savings</p>
+                <p>{dbUsers.length}</p>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+          <div className="user-display-table">
+            <div className="table-parent-container">
+              <table>
+                <thead>
+                  <th>Name</th>
+                  <th>Location</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Date Joined</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </thead>
 
-        <SwiperSlide>
-        <div className="summary-card loan-user">
-        <img src={Loans} alt="" />
-          <p className='user-type'>Users With Loans</p>
-          <p>{dbUsers.length}</p>
-        </div>
-        </SwiperSlide>
+                <tbody>{filteredDashBoardUsers}</tbody>
+              </table>
+            </div>
+          </div>
 
-        <SwiperSlide>
-        <div className="summary-card savings-user">
-        <img src={Savings} alt="" />
-          <p className='user-type'>Users With Savings</p>
-          <p>{dbUsers.length}</p>
-        </div>
-        </SwiperSlide>
-
-        </Swiper>
-      <div className="user-display-table">
-        <div className="table-parent-container">
-          <table>
-            <thead>
-                <th>Name</th>
-                <th>Location</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Date Joined</th>
-                <th>Status</th>
-                <th>Action</th>
-            </thead>
-
-            <tbody>
-              {filteredDashBoardUsers}
-              
-            </tbody>
-          </table>
-        </div>
-        
-      </div>
-
-      <section className="table-pagination">
-          <ReactPaginate 
-        breakLabel="..."
-        nextLabel= {<FaCaretRight style={iconstyle} />}
-        previousLabel= {<FaCaretLeft style={iconstyle} />}
-        pageCount={pageCount}
-        onPageChange={changePage}
-        containerClassName={'paginateButtons'}
-        pageRangeDisplayed={5}
-        marginPagesDisplayed={2}
-        previousLinkClassName={'prevButton'}
-        nextLinkClassName={'nextButton'}
-        disabledClassName={'disabledButton'}
-        activeClassName={'activeButton'}
-        renderOnZeroPageCount={null}
-        />
+          <section className="table-pagination">
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel={<FaCaretRight style={iconstyle} />}
+              previousLabel={<FaCaretLeft style={iconstyle} />}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={"paginateButtons"}
+              pageRangeDisplayed={5}
+              marginPagesDisplayed={2}
+              previousLinkClassName={"prevButton"}
+              nextLinkClassName={"nextButton"}
+              disabledClassName={"disabledButton"}
+              activeClassName={"activeButton"}
+              renderOnZeroPageCount={null}
+            />
+          </section>
         </section>
-    </section> 
-       
-       
-}
-
-
-     </>
-  )
+      )}
+    </>
+  );
 }
 
 export default Dashboard

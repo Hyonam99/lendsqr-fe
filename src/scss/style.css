@@ -455,9 +455,6 @@ small {
   width: 80%;
   height: 200px;
   margin: 0 auto;
-  background-image: url(../images_asset/chart.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .swiper-wrapper {
@@ -584,6 +581,9 @@ small {
 }
 .user-profile-actions .action-buttons {
   gap: 10px;
+}
+.user-profile-actions .action-buttons button {
+  cursor: pointer;
 }
 
 .user-profile-intro {

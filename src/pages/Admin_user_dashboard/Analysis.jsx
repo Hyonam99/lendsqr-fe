@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Chart from '../../images_asset/chart.jpg'
+import LineChart from "../../components/LineChart";
+// import ChartP from '../../images_asset/chart.jpg'
 
 const Analysis = () => {
   // const userBase = "https://randomuser.me/api/?results=20"; 
@@ -22,9 +23,8 @@ const Analysis = () => {
     <section className='chart-container'>
       <h2>Customers Trend Analysis</h2>
       <div className="chart-box-holder">
-      
+        <LineChart />
       </div>  
-      <span>This page is still under development</span>    
     </section>
   )
 }
